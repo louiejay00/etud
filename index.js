@@ -33,17 +33,17 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "/frontend/build", "index.html"));
 });
 // User Routes
-app.use("/user", userRoutes);
+app.use("/api/v1/user", userRoutes);
 //Driver Routes
-app.use("/driver", driverRoutes);
+app.use("/api/v1/driver", driverRoutes);
 //fare Routes
-app.use("/fare", fareRoutes);
+app.use("/api/v1/fare", fareRoutes);
 //Logs Routess
-app.use("/log", logsRoute);
+app.use("/api/v1/log", logsRoute);
 
-app.use("/process", processRoute);
+app.use("/api/v1/process", processRoute);
 
-app.use("/queue", queueRoute);
+app.use("/api/v1/queue", queueRoute);
 
-app.use("/admin", adminRoute);
+app.use("/api/v1/admin", adminRoute);
 app.listen(port, () => console.log("Running on port 5000"));

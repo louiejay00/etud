@@ -147,7 +147,7 @@ function App() {
 
   useEffect(() => {
     // axios.defaults.baseURL = "http://localhost:5000";
-    axios.defaults.baseURL = "";
+    axios.defaults.baseURL = "/api/v1";
   }, []);
   if (!auth) {
     return <LoginPage />;
