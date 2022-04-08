@@ -37,13 +37,12 @@ app.use("/api/v1/driver", driverRoutes);
 app.use("/api/v1/fare", fareRoutes);
 //Logs Routess
 app.use("/api/v1/log", logsRoute);
-
 app.use("/api/v1/process", processRoute);
-
 app.use("/api/v1/queue", queueRoute);
+app.use("/api/v1/admin", adminRoute);
 
-app.get("/", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "/frontend/build", "index.html"));
 });
-app.use("/api/v1/admin", adminRoute);
+
 app.listen(port, () => console.log("Running on port 5000"));
