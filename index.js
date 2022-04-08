@@ -26,9 +26,6 @@ mongoose
   .then(() => console.log("Database Connected"))
   .catch((err) => console.log(err));
 
-//host fronend/build folder
-app.use(express.static(__dirname + "/frontend/build"));
-
 // User Routes
 app.use("/api/v1/user", userRoutes);
 //Driver Routes
@@ -41,8 +38,9 @@ app.use("/api/v1/process", processRoute);
 app.use("/api/v1/queue", queueRoute);
 app.use("/api/v1/admin", adminRoute);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "/frontend/build", "index.html"));
+app.use(express.static(path.join(__dirname, "frontend/build")));
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
 });
 
 app.listen(port, () => console.log("Running on port 5000"));
