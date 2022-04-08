@@ -29,9 +29,6 @@ mongoose
 //host fronend/build folder
 app.use(express.static(__dirname + "/frontend/build"));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "/frontend/build", "index.html"));
-});
 // User Routes
 app.use("/api/v1/user", userRoutes);
 //Driver Routes
@@ -45,5 +42,8 @@ app.use("/api/v1/process", processRoute);
 
 app.use("/api/v1/queue", queueRoute);
 
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "/frontend/build", "index.html"));
+});
 app.use("/api/v1/admin", adminRoute);
 app.listen(port, () => console.log("Running on port 5000"));
